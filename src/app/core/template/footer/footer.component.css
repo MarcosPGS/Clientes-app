@@ -4,7 +4,7 @@
     bottom: 0;
     display: flex;
     justify-content: space-between;
-    background-color: var( --cor-caixa-cinza);
+    background-color: var(--cor-padrao);
     z-index: 1;
   }
   .footer span {

@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  events: string[] = [];
+  opened = true;
   constructor() { }
 
   ngOnInit(): void {

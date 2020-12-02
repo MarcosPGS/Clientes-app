@@ -4,15 +4,20 @@ html, body { height: 100%; }
 body { margin: 0;
     font-family:'Futura LT Book', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
     :root {
-        --cor-padrao: rgb(49, 141, 211);
-        --cor-caixa-azul: #048abf;
+      --cor-padrao: #1A237E;
+      --cor-caixa-branca: #ffffff;
+      --cor-200: #E8EAF6;
+      --cor-400: #5C6BC0;
+      --cor-laranjada: #ffa100;
+
+
+        /* --cor-caixa-azul: #048abf;
         --cor-caixa-azul-escuro: #0869a6;
         --cor-caixa-laranja: #f27f1b;
-        --cor-caixa-branca: #ffffff;
         --cor-caixa-vermelho: #d93333;
         --cor-caixa-verde: #00b265;
         --cor-caixa-ciano: #00b2a0;
-        --cor-caixa-cinza: #757575;
+        --cor-caixa-cinza: #757575; */
         --margens-laterais-container: 25px;
       
         /* Cores das fontes */

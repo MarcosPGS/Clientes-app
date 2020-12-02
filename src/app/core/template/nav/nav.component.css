@@ -1,0 +1,36 @@
+.sidenav {
+    background-color: var( --cor-200);
+    width: 200px;
+}
+
+.sidenav a {
+    color: var(--cor-padrao);
+}
+.sidenav a:hover {
+    background: var(--cor-400);
+    color: var(--cor-caixa-branca);
+    margin: 0;
+    border-left: 5px solid var( --cor-laranjada);
+  }
+
+.sidenav mat-icon {
+    padding-right: 10px;
+}
+
+.content {
+    padding: 16px;
+    background-color: #FFF;
+}
+.itemMenu{
+ height: 130px !important;
+ text-transform: uppercase;
+ font-weight: var( --fonte-medium);
+ text-align: center;
+ font-family: var( --fonte-padrao);
+}
+
+@media screen and (max-width: 720px) {
+    .sidenav {
+      display: none;
+    }
+  }

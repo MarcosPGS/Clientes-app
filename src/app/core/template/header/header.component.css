@@ -1,6 +1,7 @@
-.textoHeader{
+.texto-header{
     font-family: var( --fonte-padrao);
 }
 .header{
     background-color: var(--cor-padrao);
 }
+

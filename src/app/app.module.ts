@@ -8,6 +8,8 @@ import { TemplateModule } from './core/template/template.module';
 import { ClientesModule } from './views/clientes/clientes.module';
 import { HomeComponent } from './views/home/home.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ BrowserModule,
     BrowserAnimationsModule,
     TemplateModule,
     ClientesModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,13 +21,20 @@
     padding: 16px;
     background-color: #FFF;
 }
-.itemMenu{
+.item-menu{
  height: 130px !important;
  text-transform: uppercase;
  font-weight: var( --fonte-medium);
  text-align: center;
  font-family: var( --fonte-padrao);
 }
+
+/* .card-container .card:not(.highlight-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+} */
+
+
 
 @media screen and (max-width: 720px) {
     .sidenav {

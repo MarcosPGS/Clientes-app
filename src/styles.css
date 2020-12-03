@@ -9,6 +9,7 @@ body { margin: 0;
       --cor-200: #E8EAF6;
       --cor-400: #5C6BC0;
       --cor-laranjada: #ffa100;
+      --cor-cinza: #757575;
 
 
         /* --cor-caixa-azul: #048abf;
@@ -16,8 +17,7 @@ body { margin: 0;
         --cor-caixa-laranja: #f27f1b;
         --cor-caixa-vermelho: #d93333;
         --cor-caixa-verde: #00b265;
-        --cor-caixa-ciano: #00b2a0;
-        --cor-caixa-cinza: #757575; */
+        --cor-caixa-ciano: #00b2a0;*/
         --margens-laterais-container: 25px;
       
         /* Cores das fontes */
@@ -40,4 +40,4 @@ body { margin: 0;
         --fonte-medium: 500;
         --fonte-bold: 700;
       }
-      
+     

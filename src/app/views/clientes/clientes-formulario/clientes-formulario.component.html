@@ -1,1 +1,31 @@
-<p>clientes-formulario works!</p>
+<mat-card class="mat-elevation-z4">
+<form [formGroup]="formulario">
+
+    <div class="formulario-cliente">
+
+        <mat-form-field appearance="outline" class="responsividade2">
+            <mat-label>Nome</mat-label>
+            <mat-label style="color: red;">*</mat-label>
+            <input matInput type="text" class="input-cliente"
+                name="nome" formControlName="nome" maxlength="100">
+            <mat-error  *ngIf="(formulario.get('nome').dirty && formulario.get('nome').touched) && formulario.get('nome').invalid || formulario.get('nome').hasError('required')">
+                    Nome é obrigatório.
+            </mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="responsividade2">
+            <mat-label>CPF</mat-label>
+            <mat-label style="color: red;">*</mat-label>
+            <input matInput mask="CPF_CNPJ" type="text" name="cpf"
+                formControlName="cpf">
+                <mat-error  *ngIf="(formulario.get('cpf').dirty && formulario.get('cpf').touched) && formulario.get('cpf').invalid || formulario.get('cpf').hasError('required')">
+                    CPF é obrigatório.
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+
+  </form>
+</mat-card>

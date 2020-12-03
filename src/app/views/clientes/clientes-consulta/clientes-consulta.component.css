@@ -1,0 +1,21 @@
+.mat-table{
+    width: 100%;
+}
+.formulario-cliente{
+    display: flex;
+}
+
+.responsividade{
+    width: 100%;
+}
+@media screen and (max-width: 700px) {
+    .formulario-cliente {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .responsividade{
+        width: auto;
+    }
+    
+  }

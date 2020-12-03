@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-formulario',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientesFormularioComponent implements OnInit {
   formulario: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -16,6 +17,11 @@ export class ClientesFormularioComponent implements OnInit {
       nome: ['', Validators.required],
       cpf: [null, Validators.required],
     });
+  }
+
+
+  voltar(): void {
+    this.router.navigate(['/clientes']);
   }
 
 }

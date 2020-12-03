@@ -1,43 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0;
-    font-family:'Futura LT Book', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-    :root {
-      --cor-padrao: #1A237E;
-      --cor-caixa-branca: #ffffff;
-      --cor-200: #E8EAF6;
-      --cor-400: #5C6BC0;
-      --cor-laranjada: #ffa100;
-      --cor-cinza: #757575;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Futura LT Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+:root {
+  --cor-padrao: #1a237e;
+  --cor-caixa-branca: #ffffff;
+  --cor-200: #e8eaf6;
+  --cor-400: #5c6bc0;
+  --cor-cinza: #757575;
+  --cor-accent: rgb(252, 45, 129);
 
+  --margens-laterais-container: 25px;
 
-        /* --cor-caixa-azul: #048abf;
-        --cor-caixa-azul-escuro: #0869a6;
-        --cor-caixa-laranja: #f27f1b;
-        --cor-caixa-vermelho: #d93333;
-        --cor-caixa-verde: #00b265;
-        --cor-caixa-ciano: #00b2a0;*/
-        --margens-laterais-container: 25px;
-      
-        /* Cores das fontes */
-        --cor-titulo-pagina: rgba(0, 0, 0, 0.54);
-        --cor-titulo-card: rgba(0, 0, 0, 0.87);
-        --cor-label: var(--cor-titulo-card);
-        --cor-descricao: var(--cor-titulo-card);
-        --cor-texto-input: var(--cor-titulo-pagina);
-        --cor-texto-input: var(--cor-titulo-card);
+  /* Cores das fontes */
+  --cor-titulo-pagina: rgba(0, 0, 0, 0.54);
+  --cor-titulo-card: rgba(0, 0, 0, 0.87);
+  --cor-label: var(--cor-titulo-card);
+  --cor-descricao: var(--cor-titulo-card);
+  --cor-texto-input: var(--cor-titulo-pagina);
+  --cor-texto-input: var(--cor-titulo-card);
 
-        /*Fonte padrão*/
-        --fonte-padrao: 'Futura LT Book', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        --fonte-tamanho-padrao: 13px;
-      
-        /* Margens */
-        --margem-botao-padrao: 20px;
-      
-        /* Peso das fontes */
-        --fonte-regular: 400;
-        --fonte-medium: 500;
-        --fonte-bold: 700;
-      }
-     
+  /*Fonte padrão*/
+  --fonte-padrao: "Futura LT Book", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --fonte-tamanho-padrao: 13px;
+
+  /* Margens */
+  --margem-botao-padrao: 20px;
+  --margen-top-form: 30px;
+
+  /* Peso das fontes */
+  --fonte-regular: 400;
+  --fonte-medium: 500;
+  --fonte-bold: 700;
+}
+.btn {
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 100px;
+}
+
+.faixa {
+  margin-top: 30px;
+  border-bottom: 1px solid rgb(221, 218, 218);
+}
+
+.titulo {
+  color: var(--cor-padrao);
+  font-size: 16px;
+  font-weight: var(--fonte-regular);
+  font-family: var(--fonte-padrao);
+}

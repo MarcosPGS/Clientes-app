@@ -1,1 +1,71 @@
-<button mat-raised-button color="primary" (click)="navegarParaIncluirCliente()">Incluir</button>
+
+<div class="titulo faixa">
+    <span>Clientes</span>
+</div>
+
+      <div class="formulario-cliente" style="margin-top: var( --margen-top-form)">
+  
+        <mat-form-field appearance="outline" class="responsividade">
+          <mat-label>Pesquisar... </mat-label>
+          <input matInput type="text" [(ngModel)]="nomeCliente"   (ngModelChange)="pesquisar()">
+          <mat-hint><small>
+              <mat-label style="color: red;">*</mat-label><span style="font-size: 10px;">Digite o nome do <strong>Cliente</strong> para filtrar a informação.</span>
+            </small></mat-hint>
+          </mat-form-field>
+  
+      </div>
+      <div style="text-align: end;" *ngIf="habilitarBotaoPesquisar">
+  
+          <button  mat-raised-button color="primary" class="btn" (click)="buscarClientePorNome(nomeCliente)">
+            <mat-icon >search</mat-icon>
+          </button>
+      </div>
+      <div style="text-align: end;">
+        <button mat-raised-button color="primary" class="btn" (click)="navegarParaIncluirCliente()">Incluir</button>
+    </div>
+
+<div class="mat-elevation-z8" style="margin-top: 20px;">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef> CPF </th>
+        <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button style="color: var(--cor-padrao);">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button style="color: var(--cor-padrao);">
+                <mat-icon>delete</mat-icon>
+              </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+    <mat-paginator [length]="100"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+  </div>
+  

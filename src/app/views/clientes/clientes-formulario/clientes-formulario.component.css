@@ -1,15 +1,18 @@
  .input-cliente{
     text-transform: uppercase;
   }
+  .input-form{
+      margin-left: 15px;
+  }
 .formulario-cliente{
     display: flex;
 }
+
 .responsividade{
     width: 100%;
 }
 .responsividade1{
     width: 33.33%;
-    margin-left: 15px;
 }
 
 .responsividade2{

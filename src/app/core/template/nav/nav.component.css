@@ -10,7 +10,7 @@
     background: var(--cor-400);
     color: var(--cor-caixa-branca);
     margin: 0;
-    border-left: 5px solid var( --cor-laranjada);
+    border-left: 5px solid var(--cor-accent);
   }
 
 .sidenav mat-icon {
@@ -27,6 +27,8 @@
  font-weight: var( --fonte-medium);
  text-align: center;
  font-family: var( --fonte-padrao);
+ /* border-bottom: 1px solid var(--cor-padrao); */
+
 }
 
 /* .card-container .card:not(.highlight-card):hover {

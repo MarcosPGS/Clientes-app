@@ -12,16 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ClientesService } from './clientes.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
-
-
-
-
-
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 @NgModule({
   declarations: [ClientesFormularioComponent, ClientesConsultaComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     ClientesRoutingModule,
     MatButtonModule,
     MatIconModule,
@@ -31,7 +32,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ReactiveFormsModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule,
+    NgxMaskModule.forRoot(maskConfig),
   ], exports: [ClientesFormularioComponent, ClientesConsultaComponent],
+  providers: [ClientesService]
 })
 export class ClientesModule { }

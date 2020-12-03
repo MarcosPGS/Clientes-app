@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Cliente } from '../../../core/models/cliente';
 import { Subject } from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+import { ClientesService } from '../clientes.service';
 
 @Component({
   selector: 'app-clientes-consulta',
@@ -12,36 +13,14 @@ import {debounceTime} from 'rxjs/operators';
   styleUrls: ['./clientes-consulta.component.css']
 })
 export class ClientesConsultaComponent implements OnInit {
-  CLIENTES: Cliente [] = [
-   {id: 1, nome: 'Marcos Paulo', cpf: '03149028132', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 2, nome: 'Laura Karev', cpf: '65485232101', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 3, nome: 'Amanda Oliveira', cpf: '25898775302', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' },
-   {id: 4, nome: 'Heitor Karev', cpf: '36528748925', dataCadastro: '12/11/2020', dataAtualizacao: '' }];
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'acoes'];
-  dataSource = new MatTableDataSource<Cliente>(this.CLIENTES);
- nomeCliente: string;
- habilitarBotaoPesquisar = false;
- modelChanged = new Subject<string>();
-  constructor(private router: Router) { 
+  dataSource = new MatTableDataSource<Cliente>();
+  nomeCliente: string;
+  habilitarBotaoPesquisar = false;
+  modelChanged = new Subject<string>();
+  clientes: Cliente[] = [];
+  constructor(private router: Router, private clientesService: ClientesService) {
     this.modelChanged
     .pipe(
       debounceTime(300))
@@ -56,6 +35,7 @@ export class ClientesConsultaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listarTodosClientes();
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
@@ -64,6 +44,13 @@ export class ClientesConsultaComponent implements OnInit {
   }
   buscarClientePorNome(nome: string): void{
     console.log(nome);
+  }
+
+
+  listarTodosClientes(): void{
+    this.clientesService.listarTodosClientes().subscribe((resp) => {
+      this.clientes = resp;
+    });
   }
 
   navegarParaIncluirCliente(): void {

@@ -36,7 +36,7 @@ export class ClientesFormularioComponent implements OnInit {
         this.formulario.reset();
       },
       (error) => {
-        alert(error.error);
+        console.log(error.error);
       }
     );
   }

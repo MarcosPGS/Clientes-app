@@ -22,7 +22,7 @@
             <mat-label>CPF</mat-label>
             <mat-label style="color: red;">*</mat-label>
             <input matInput mask="CPF_CNPJ" type="text" name="cpf"
-                formControlName="cpf" maxlength="11" mask="CPF_CNPJ">
+                formControlName="cpf" maxlength="14" mask="CPF_CNPJ">
                 <mat-error  *ngIf="(formulario.get('cpf').dirty && formulario.get('cpf').touched) && formulario.get('cpf').invalid || formulario.get('cpf').hasError('required')">
                     CPF é obrigatório.
             </mat-error>

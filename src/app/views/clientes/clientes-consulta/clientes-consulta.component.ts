@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Cliente } from '../../../core/models/cliente';
 import { Subject } from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { ClientesService } from '../clientes.service';
 
 @Component({
   selector: 'app-clientes-consulta',
   templateUrl: './clientes-consulta.component.html',
-  styleUrls: ['./clientes-consulta.component.css']
+  styleUrls: ['./clientes-consulta.component.css'],
 })
 export class ClientesConsultaComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -18,13 +18,14 @@ export class ClientesConsultaComponent implements OnInit {
   dataSource = new MatTableDataSource<Cliente>();
   nomeCliente: string;
   habilitarBotaoPesquisar = false;
+  mostrarTabela = false;
   modelChanged = new Subject<string>();
   clientes: Cliente[] = [];
-  constructor(private router: Router, private clientesService: ClientesService) {
-    this.modelChanged
-    .pipe(
-      debounceTime(300))
-    .subscribe(() => {
+  constructor(
+    private router: Router,
+    private clientesService: ClientesService
+  ) {
+    this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
       if (this.nomeCliente.length >= 3) {
         this.habilitarBotaoPesquisar = true;
       }
@@ -42,14 +43,14 @@ export class ClientesConsultaComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-  buscarClientePorNome(nome: string): void{
+  buscarClientePorNome(nome: string): void {
     console.log(nome);
   }
 
-
-  listarTodosClientes(): void{
+  listarTodosClientes(): void {
     this.clientesService.listarTodosClientes().subscribe((resp) => {
       this.clientes = resp;
+      this.mostrarTabela = true;
     });
   }
 
@@ -57,7 +58,33 @@ export class ClientesConsultaComponent implements OnInit {
     this.router.navigate(['/incluir']);
   }
 
-  pesquisar(): void{
+  pesquisar(): void {
     this.modelChanged.next();
+  }
+
+  excluir(id: number): void {
+    this.clientesService.excluir(id).subscribe(
+      (resp) => {
+        this.listarTodosClientes();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  buscarPorNome(): void{
+    this.clientesService.buscarPorNome(this.nomeCliente).subscribe((resp) => {
+      if (resp === null) {
+        this.mostrarTabela = false;
+      }
+      if (resp !== null) {
+        this.mostrarTabela = true;
+        this.clientes = resp;
+      }
+      this.nomeCliente = null;
+      this.habilitarBotaoPesquisar = false;
+    }, error => {console.log(error);
+    });
   }
 }

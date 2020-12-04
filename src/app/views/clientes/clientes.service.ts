@@ -37,4 +37,13 @@ export class ClientesService {
   salvar(cliente: Cliente): Observable<Cliente>{
     return this.http.post<Cliente>(`${this.URL}`, cliente);
   }
+  excluir(id: number): Observable<Cliente>{
+    const url = `${this.URL}/${id}`;
+    return this.http.delete<Cliente>(url);
+  }
+
+  buscarPorNome(nome: string): Observable<Cliente[]>{
+    const url = `${this.URL}/${nome}`;
+    return this.http.get<Cliente[]>(url);
+  }
 }

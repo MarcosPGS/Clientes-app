@@ -9,6 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatSidenavModule,
     MatListModule,
     AppRoutingModule,
+    MatMenuModule
 
   ], exports: [FooterComponent, HeaderComponent, NavComponent],
 })

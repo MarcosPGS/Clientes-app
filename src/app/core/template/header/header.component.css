@@ -7,6 +7,25 @@
 .mat-icon-button{
     display: none;
 }
+a:hover {
+    background: var(--cor-400) !important;
+    color: var(--cor-caixa-branca);
+    margin: 0;
+    border-left: 5px solid var(--cor-accent);
+    
+  }
+ a .mat-icon{
+    color: var(--cor-padrao);
+}
+.item-menu{
+    text-transform: uppercase;
+    font-weight: var( --fonte-medium);
+    text-align: center;
+    font-family: var( --fonte-padrao);
+    color: var(--cor-padrao);
+    /* border-bottom: 1px solid var(--cor-padrao); */
+   
+   }
 
 @media screen and (max-width: 720px) {
     .mat-icon-button{

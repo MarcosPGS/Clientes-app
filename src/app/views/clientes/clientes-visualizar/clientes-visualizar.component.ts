@@ -36,7 +36,7 @@ export class ClientesVisualizarComponent implements OnInit {
       this.clienteRecebido = resp;
     }, error => {
       console.log(error);
-    })
+    });
   }
 
 }

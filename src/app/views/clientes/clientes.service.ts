@@ -32,6 +32,9 @@ export class ClientesService {
     })
   };
 
+  atualizar(cliente: Cliente): Observable<Cliente>{
+    return this.http.put<Cliente>(`${this.URL}`, cliente);
+  }
   buscarPorNome(nome: string): Observable<Cliente[]>{
     const url = `${this.URL}/${nome}`;
     return this.http.get<Cliente[]>(url);

@@ -53,10 +53,10 @@ export class ClientesConsultaComponent implements OnInit {
   buscarClientePorNome(nome: string): void {
     console.log(nome);
   }
-  atualizar(cliente: Cliente): void{
-    this.cliente = cliente;
+  atualizar(c: Cliente): void{
+    this.cliente = c;
     this.router.navigate(['/atualizar'], {
-      queryParams: { fundo: JSON.stringify(cliente) },
+      queryParams: { cliente: JSON.stringify(c) },
       skipLocationChange: true
     });
   }

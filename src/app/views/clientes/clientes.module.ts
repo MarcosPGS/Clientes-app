@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { ClientesAtualizarComponent } from './clientes-atualizar/clientes-atualizar.component';
 import { ClientesVisualizarComponent } from './clientes-visualizar/clientes-visualizar.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -36,6 +38,7 @@ const maskConfig: Partial<IConfig> = {
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
+    MatSlideToggleModule,
     NgxMaskModule.forRoot(maskConfig),
   ], exports: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent, ClientesVisualizarComponent],
   providers: [ClientesService]

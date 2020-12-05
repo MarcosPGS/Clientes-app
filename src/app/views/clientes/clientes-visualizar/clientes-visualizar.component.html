@@ -1,0 +1,46 @@
+<div class="titulo faixa" style="font-size: 25px">
+  <span>{{ clienteRecebido.nome }}</span>
+</div>
+<div class="formulario" style="margin-top: 30px;">
+  <div class="input-form responsividade1">
+    <mat-card class="mat-elevation-z4 cardVisualizar">
+        <mat-card-header>
+          <mat-card-subtitle>CPF:</mat-card-subtitle>
+          <mat-card-title style="font-size: var(--fonte-tamanho-padrao);">{{ clienteRecebido.cpf | mask: '000.000.000-00'}}
+        </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+  </div>
+
+  <div class="input-form responsividade1">
+    <mat-card class="mat-elevation-z4 cardVisualizar">
+        <mat-card-header>
+          <mat-card-subtitle>Número Contato:</mat-card-subtitle>
+          <mat-card-title style="font-size: var(--fonte-tamanho-padrao);">{{ clienteRecebido.celular | mask: '(00) 0.0000-0000'}}
+        </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+  </div>
+
+  <div class="input-form responsividade1">
+    <mat-card class="mat-elevation-z4 cardVisualizar">
+        <mat-card-header>
+          <mat-card-subtitle>Data Cadastro:</mat-card-subtitle>
+          <mat-card-title style="font-size: var(--fonte-tamanho-padrao);">{{ clienteRecebido.dataCadastro }}
+        </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+  </div>
+</div>
+
+<div style="text-align: end; margin-top: 30px">
+  <button
+    mat-raised-button
+    color="accent"
+    class="btn"
+    style="margin-right: 5px"
+    (click)="voltar()"
+  >
+    Voltar
+  </button>
+</div>

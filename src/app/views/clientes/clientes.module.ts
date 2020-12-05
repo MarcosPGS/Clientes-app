@@ -15,12 +15,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ClientesService } from './clientes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { ClientesAtualizarComponent } from './clientes-atualizar/clientes-atualizar.component';
+import { ClientesVisualizarComponent } from './clientes-visualizar/clientes-visualizar.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
 @NgModule({
-  declarations: [ClientesFormularioComponent, ClientesConsultaComponent],
+  declarations: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent, ClientesVisualizarComponent],
   imports: [
   CommonModule,
     ClientesRoutingModule,
@@ -35,7 +37,7 @@ const maskConfig: Partial<IConfig> = {
     MatPaginatorModule,
     HttpClientModule,
     NgxMaskModule.forRoot(maskConfig),
-  ], exports: [ClientesFormularioComponent, ClientesConsultaComponent],
+  ], exports: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent, ClientesVisualizarComponent],
   providers: [ClientesService]
 })
 export class ClientesModule { }

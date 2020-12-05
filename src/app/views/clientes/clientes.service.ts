@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from 'src/app/core/models/cliente';
 import { environment } from '../../../environments/environment';
+import { TotalizadorClientes } from '../../core/models/totalizado-clientes';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,19 @@ export class ClientesService {
       'Access-Control-Allow-Headers': 'Origin, X-Request-Width, Content-Type, Accept, Content-Type, Authorization, Accept-Version, Content-MD5, CSRF-Token, Access-Control-Request-Method, Access-Control-Request-Headers, if-none-match'
     })
   };
+
+  buscarPorNome(nome: string): Observable<Cliente[]>{
+    const url = `${this.URL}/${nome}`;
+    return this.http.get<Cliente[]>(url);
+  }
+  buscarPorId(id: number): Observable<Cliente>{
+    const url = `${this.URL}/id/${id}`;
+    return this.http.get<Cliente>(url);
+  }
+  excluir(id: number): Observable<Cliente>{
+    const url = `${this.URL}/${id}`;
+    return this.http.delete<Cliente>(url);
+  }
   listarTodosClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(`${this.URL}`);
   }
@@ -37,13 +51,9 @@ export class ClientesService {
   salvar(cliente: Cliente): Observable<Cliente>{
     return this.http.post<Cliente>(`${this.URL}`, cliente);
   }
-  excluir(id: number): Observable<Cliente>{
-    const url = `${this.URL}/${id}`;
-    return this.http.delete<Cliente>(url);
-  }
 
-  buscarPorNome(nome: string): Observable<Cliente[]>{
-    const url = `${this.URL}/${nome}`;
-    return this.http.get<Cliente[]>(url);
+  totalizarClientes(): Observable<TotalizadorClientes> {
+    const url = `${this.URL}/totalizador`;
+    return this.http.get<TotalizadorClientes>(url);
   }
 }

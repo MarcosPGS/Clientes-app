@@ -1,0 +1,5 @@
+.cardVisualizar{
+    background-color: var( --cor-200);
+    color: var(--cor-padrao);
+    border-bottom: 5px solid var(--cor-accent);
+}

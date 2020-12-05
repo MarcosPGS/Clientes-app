@@ -21,6 +21,7 @@ export class ClientesFormularioComponent implements OnInit {
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
       cpf: [null, Validators.required],
+      celular: [null],
     });
   }
 
@@ -45,6 +46,8 @@ export class ClientesFormularioComponent implements OnInit {
     const cliente = {
       nome: this.formulario.value.nome,
       cpf: this.formulario.value.cpf,
+      ativo: 'S',
+      celular: this.formulario.value.celular
     };
     return cliente;
   }

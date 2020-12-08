@@ -18,13 +18,17 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { ClientesAtualizarComponent } from './clientes-atualizar/clientes-atualizar.component';
 import { ClientesVisualizarComponent } from './clientes-visualizar/clientes-visualizar.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ClienteExcluirDialogComponent } from './modal/cliente-excluir-dialog/cliente-excluir-dialog.component';
+
 
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
 @NgModule({
-  declarations: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent, ClientesVisualizarComponent],
+  declarations: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent,
+     ClientesVisualizarComponent, ClienteExcluirDialogComponent],
   imports: [
   CommonModule,
     ClientesRoutingModule,
@@ -39,8 +43,10 @@ const maskConfig: Partial<IConfig> = {
     MatPaginatorModule,
     HttpClientModule,
     MatSlideToggleModule,
+    MatDialogModule,
     NgxMaskModule.forRoot(maskConfig),
-  ], exports: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent, ClientesVisualizarComponent],
+  ], exports: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent,
+     ClientesVisualizarComponent, ClienteExcluirDialogComponent],
   providers: [ClientesService]
 })
 export class ClientesModule { }

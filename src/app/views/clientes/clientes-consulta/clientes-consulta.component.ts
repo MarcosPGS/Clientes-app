@@ -6,7 +6,9 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { ClientesService } from '../clientes.service';
 import { MatSort } from '@angular/material/sort';
-import { Cliente } from 'src/app/core/models/cliente';
+import { Cliente } from '../../../core/models/cliente';
+import { MatDialog } from '@angular/material/dialog';
+import { ClienteExcluirDialogComponent } from '../modal/cliente-excluir-dialog/cliente-excluir-dialog.component';
 
 @Component({
   selector: 'app-clientes-consulta',
@@ -28,7 +30,8 @@ export class ClientesConsultaComponent implements OnInit {
   constructor(
     private router: Router,
     private clientesService: ClientesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
   ) {
     this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
       if (this.nomeCliente.length >= 3) {
@@ -65,6 +68,20 @@ export class ClientesConsultaComponent implements OnInit {
     this.clientesService.listarTodosClientes().subscribe((resp): void => {
       this.clientes = resp;
       this.mostrarTabela = true;
+    });
+  }
+
+
+  mostrarModalConfirmacaoExclusao(cliente: Cliente): void {
+    const dialogRef = this.dialog.open(ClienteExcluirDialogComponent, {
+      data: {
+        ...cliente,
+      }
+    });
+    dialogRef.afterClosed().subscribe((isExcluirRegistro) => {
+      if (isExcluirRegistro) {
+        this.excluir(cliente.id);
+      }
     });
   }
 

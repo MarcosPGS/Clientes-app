@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientesService } from '../clientes/clientes.service';
+import { TotalizadorClientes } from '../../core/models/totalizado-clientes';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  totalizador: TotalizadorClientes = new TotalizadorClientes();
+  constructor(private clienteService: ClientesService) { }
 
   ngOnInit(): void {
+    this.totalizarClientes();
   }
 
+  totalizarClientes(): void{
+    this.clienteService.totalizarClientes().subscribe((resp) => {
+      this.totalizador = resp;
+    });
+  }
 }

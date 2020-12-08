@@ -9,6 +9,7 @@ import { ClientesModule } from './views/clientes/clientes.module';
 import { HomeComponent } from './views/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ BrowserModule,
     TemplateModule,
     ClientesModule,
     MatCardModule,
+    MatIconModule,
     MatButtonModule
   ],
   providers: [],

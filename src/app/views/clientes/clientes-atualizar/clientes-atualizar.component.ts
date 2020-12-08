@@ -30,7 +30,6 @@ export class ClientesAtualizarComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(resp => {
       if (resp.cliente) {
         this.cliente = JSON.parse(resp.cliente);
-        console.log(this.cliente);
         if (this.cliente.ativo === 'S') {
           this.ativo = true;
         }

@@ -45,6 +45,9 @@ body {
   margin-top: 20px;
   width: 100px;
 }
+span{
+  font-family: var(--fonte-padrao);
+}
 
 .faixa {
   margin-top: 30px;
@@ -56,4 +59,49 @@ body {
   font-size: 16px;
   font-weight: var(--fonte-regular);
   font-family: var(--fonte-padrao);
+}
+.tituloModal{
+  font-weight: var(--fonte-regular);
+  font-family: var(--fonte-padrao);
+  color: var(--cor-padrao);
+}
+.input-cliente{
+  text-transform: uppercase;
+}
+.input-form{
+  margin-right: 15px;
+}
+.formulario{
+display: flex;
+}
+
+.responsividade{
+width: 100%;
+}
+.responsividade1{
+width: 33.33%;
+}
+
+.responsividade2{
+width: 50%;
+margin-right: 15px;
+}
+
+@media screen and (max-width: 700px) {
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.responsividade{
+    width: auto;
+}
+
+.responsividade1{
+    width: auto;
+}
+
+.responsividade2{
+    width: auto;
+}
 }

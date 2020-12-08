@@ -1,5 +1,50 @@
-<div >
-    <span> 
-      Inícial
-    </span>
-  </div>
+<div class="home">
+  <span> Olá, Marcos </span>
+</div>
+
+<div class="painelCards" style="margin-top: 30px">
+  <mat-card class="input-form responsividade1 cards">
+    <div class="card-info">
+      <p style="font-size: 20px;">Clientes Ativos</p>
+      <p>{{totalizador.data}}</p>
+      <p style="padding-top: 50px; font-size: 50px">{{totalizador.quantidadeClientesAtivos}}</p>
+    </div>
+    <div class="card-icon">
+      <mat-icon
+        style="padding-bottom: 50px; font-size: 90px; padding-right: 50px"
+        >signal_cellular_alt</mat-icon
+      >
+    </div>
+  </mat-card>
+
+  <mat-card class="input-form responsividade1 cards">
+    <div class="card-info">
+      <p style="font-size: 20px;">Clientes Inativos</p>
+      <p>{{totalizador.data}}</p>
+      <p style="padding-top: 50px; font-size: 50px">{{totalizador.quantidadeClientesInativos}}</p>
+    </div>
+    <div class="card-icon">
+      <mat-icon
+        style="padding-bottom: 50px; font-size: 90px; padding-right: 50px"
+        >signal_cellular_alt</mat-icon
+      >
+    </div>
+
+  </mat-card>
+  <mat-card class="input-form responsividade1 cards">
+    <div class="card-info">
+      <p style="font-size: 20px;">Total Clientes</p>
+      <p>{{totalizador.data}}</p>
+      <p style="padding-top: 50px; font-size: 50px">{{totalizador.totalClientes}}</p>
+    </div>
+    <div class="card-icon">
+      <mat-icon
+        style="padding-bottom: 50px; font-size: 90px; padding-right: 50px"
+        >signal_cellular_alt</mat-icon
+      >
+    </div>
+
+
+  </mat-card>
+</div>
+<!-- fim card -->

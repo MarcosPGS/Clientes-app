@@ -9,7 +9,7 @@
         matInput
         type="text"
         [(ngModel)]="nomeCliente"
-        (ngModelChange)="pesquisarNome()"
+        (ngModelChange)="pesquisar()"
       />
       <mat-hint
         ><small>
@@ -24,7 +24,7 @@
 
     <mat-form-field appearance="outline" class="responsividade2">
       <mat-label>Mês</mat-label>
-      <mat-select [(ngModel)]="mes" name="mes" (ngModelChange)="pesquisarMes()">
+      <mat-select [(ngModel)]="mes" name="mes" (ngModelChange)="pesquisar()">
         <mat-option *ngFor="let mes of meses" [value]="mes">
           {{mes}}
         </mat-option>

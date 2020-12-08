@@ -63,10 +63,7 @@ export class ServicoPrestadoConsultaComponent implements OnInit {
   navegarParaIncluirServico(): void {
     this.router.navigate(['/incluirServico']);
   }
-  pesquisarNome(): void {
-    this.modelChanged.next();
-  }
-  pesquisarMes(): void {
+  pesquisar(): void {
     this.modelChanged.next();
   }
   listarTodosServicos(): void {

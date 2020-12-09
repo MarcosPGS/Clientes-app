@@ -10,6 +10,8 @@ import { HomeComponent } from './views/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ServicoPrestadoModule } from './views/servico-prestado/servico-prestado.module';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -25,9 +27,10 @@ BrowserModule,
     ClientesModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ServicoPrestadoModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

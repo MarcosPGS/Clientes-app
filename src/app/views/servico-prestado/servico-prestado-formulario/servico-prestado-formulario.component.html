@@ -1,1 +1,89 @@
-<p>servico-prestado-formulario works!</p>
+<div class="titulo faixa">
+  <span>Cadastro de Serviço Prestado</span>
+</div>
+
+<form [formGroup]="formulario" style="margin-top: var(--margen-top-form)">
+  <div class="formulario">
+    <mat-form-field appearance="outline" class="responsividade">
+      <mat-label>Cliente</mat-label>
+      <mat-label style="color: red">*</mat-label>
+      <mat-select formControlName="selectCliente" [(value)]="selectCliente">
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+          {{ cliente.nome }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formulario.get('selectCliente').hasError('required')">
+        Cliente é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="formulario">
+    <mat-form-field appearance="outline" class="responsividade">
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="descricao"
+        name="descricao"
+        maxlength="100"
+      />
+      <mat-error
+        *ngIf="
+          (formulario.get('descricao').dirty &&
+            formulario.get('descricao').touched &&
+            formulario.get('descricao').invalid) ||
+          formulario.get('descricao').hasError('required')
+        "
+      >
+        Descrição é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div class="formulario">
+
+    <mat-form-field appearance="outline" class="responsividade2">
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="data" (dateInput)="dataInput($event)"
+      formControlName="data" readonly="true">
+      <mat-datepicker-toggle matSuffix [for]="data" ></mat-datepicker-toggle>
+      <mat-datepicker touchUi #data></mat-datepicker>
+
+      <mat-hint><small>
+        <mat-label style="color: red;">*</mat-label><span style="font-size: 10px;">Clique no ícone do calendário
+          e selecione a data.</span>
+      </small></mat-hint>
+      <mat-error  *ngIf="(formulario.get('data').dirty && formulario.get('data').touched) && formulario.get('data').invalid || formulario.get('data').hasError('required')">
+        Data é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="responsividade2">
+        <mat-label>Valor</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="valor"
+          name="valor"
+          currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+        />
+        <mat-error
+          *ngIf="
+            (formulario.get('valor').dirty &&
+              formulario.get('valor').touched &&
+              formulario.get('valor').invalid) ||
+            formulario.get('valor').hasError('required')
+          "
+        >
+          Valor é obrigatório.
+        </mat-error>
+      </mat-form-field>
+  </div>
+</form>
+<div style="text-align: end;">
+    <button mat-raised-button color="accent" class="btn" style="margin-right: 5px;" (click)="voltar()">Cancelar</button>
+    <button mat-raised-button color="primary" class="btn" (click)="salvar()" [disabled]="formulario.invalid">Salvar</button>
+</div>

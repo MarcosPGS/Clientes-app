@@ -14,6 +14,13 @@ const routes: Routes = [
         (m) => m.ClientesModule,
       ),
   },
+  {
+    path: 'servicos',
+    loadChildren: () =>
+      import('./views/servico-prestado/servico-prestado.module').then(
+        (m) => m.ServicoPrestadoModule,
+      ),
+  },
 ];
 
 @NgModule({

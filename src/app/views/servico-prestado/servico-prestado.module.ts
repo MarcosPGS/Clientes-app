@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ServicoPrestadoRoutingModule } from './servico-prestado-routing.module';
@@ -14,9 +14,14 @@ import { ServicoPrestadoService } from './servico-prestado.service';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
+registerLocaleData(localePt, 'pt-BR');
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -33,10 +38,12 @@ const maskConfig: Partial<IConfig> = {
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatDatepickerModule,
     MatSelectModule,
+    CurrencyMaskModule,
+    MatDatepickerModule,
+    MatNativeDateModule ,
     NgxMaskModule.forRoot(maskConfig),
   ], exports: [ServicoPrestadoConsultaComponent, ServicoPrestadoFormularioComponent],
-  providers: [ServicoPrestadoService]
+  providers: [ServicoPrestadoService, { provide: LOCALE_ID, useValue: 'pt-BR' },]
 })
 export class ServicoPrestadoModule { }

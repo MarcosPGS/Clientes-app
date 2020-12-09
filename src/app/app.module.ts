@@ -14,13 +14,15 @@ import { ServicoPrestadoModule } from './views/servico-prestado/servico-prestado
 import { DatePipe } from '@angular/common';
 import { LoginModule } from './views/login/login.module';
 import { AplicacaoComponent } from './views/aplicacao/aplicacao.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AplicacaoComponent
+    AplicacaoComponent,
+    NotFoundComponent,
   ],
   imports: [
 BrowserModule,
@@ -32,7 +34,7 @@ BrowserModule,
     MatIconModule,
     MatButtonModule,
     ServicoPrestadoModule,
-    LoginModule
+    LoginModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

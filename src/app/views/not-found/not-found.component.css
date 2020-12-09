@@ -1,0 +1,6 @@
+.not-found{
+    margin: auto;
+    padding-top: 10%;
+    color: var(--cor-padrao);
+    text-align: center;
+}

@@ -44,6 +44,7 @@ export class ServicoPrestadoConsultaComponent implements OnInit {
       .pesquisarServicos(this.nomeCliente, this.mes.toString())
       .subscribe(
         (resp) => {
+          console.log(resp);
           if (resp === null || resp.length === 0) {
             this.mostrarTabela = false;
           }

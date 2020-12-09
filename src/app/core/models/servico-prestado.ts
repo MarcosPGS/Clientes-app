@@ -4,6 +4,5 @@ export class ServicoPrestado{
         descricao: string;
         valor: number;
         data: string;
-        cliente?: Cliente;
-        idCliente: number;
+        cliente: Cliente;
 }

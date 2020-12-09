@@ -66,16 +66,16 @@
         <input
           matInput
           type="text"
-          formControlName="valor"
-          name="valor"
+          formControlName="preco"
+          name="preco"
           currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
         />
         <mat-error
           *ngIf="
-            (formulario.get('valor').dirty &&
-              formulario.get('valor').touched &&
-              formulario.get('valor').invalid) ||
-            formulario.get('valor').hasError('required')
+            (formulario.get('preco').dirty &&
+              formulario.get('preco').touched &&
+              formulario.get('preco').invalid) ||
+            formulario.get('preco').hasError('required')
           "
         >
           Valor é obrigatório.

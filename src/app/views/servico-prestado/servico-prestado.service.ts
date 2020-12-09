@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ServicoPrestadoIncluir } from 'src/app/core/models/servico-prestado-incluir';
 import { environment } from 'src/environments/environment';
 import { ServicoPrestado } from '../../core/models/servico-prestado';
 
@@ -40,5 +41,9 @@ export class ServicoPrestadoService {
    .set('mes', mes);
    const url = `${this.URL}/pesquisar?` + httpParams.toString();
    return this.http.get<ServicoPrestado[]>(url);
+  }
+
+  salvar(servico: ServicoPrestadoIncluir): Observable<ServicoPrestadoIncluir>{
+    return this.http.post<ServicoPrestadoIncluir>(`${this.URL}`, servico);
   }
 }

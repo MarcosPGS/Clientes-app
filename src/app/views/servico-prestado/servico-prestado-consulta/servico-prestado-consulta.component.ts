@@ -62,7 +62,7 @@ export class ServicoPrestadoConsultaComponent implements OnInit {
       );
   }
   navegarParaIncluirServico(): void {
-    this.router.navigate(['/incluirServico']);
+    this.router.navigate(['/aplicacao/servicos/incluirServico']);
   }
   pesquisar(): void {
     this.modelChanged.next();

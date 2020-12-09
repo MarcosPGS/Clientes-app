@@ -58,7 +58,7 @@ export class ClientesConsultaComponent implements OnInit {
   }
   atualizar(c: Cliente): void{
     this.cliente = c;
-    this.router.navigate(['/atualizar'], {
+    this.router.navigate(['/aplicacao/clientes/atualizar'], {
       queryParams: { cliente: JSON.stringify(c) },
       skipLocationChange: true
     });
@@ -86,7 +86,7 @@ export class ClientesConsultaComponent implements OnInit {
   }
 
   navegarParaIncluirCliente(): void {
-    this.router.navigate(['/incluir']);
+    this.router.navigate(['/aplicacao/clientes/incluir']);
   }
 
   pesquisar(): void {
@@ -121,7 +121,7 @@ export class ClientesConsultaComponent implements OnInit {
 
   visualizar(c: Cliente): void{
     this.cliente = c;
-    this.router.navigate(['/visualizar'], {
+    this.router.navigate(['/aplicacao/clientes/visualizar'], {
       queryParams: { cliente: JSON.stringify(c) },
       skipLocationChange: true
     });

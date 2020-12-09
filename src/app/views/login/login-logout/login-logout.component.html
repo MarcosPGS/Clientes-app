@@ -1,0 +1,52 @@
+<div class="login">
+  <mat-card class="cardLogin">
+    <mat-card-header>
+      <mat-card-title style="color: var(--cor-padrao); font-family: var(--fonte-padrao);">Finanças</mat-card-title>
+      <mat-card-subtitle style="color: var(--cor-padrao); font-family: var(--fonte-padrao);">Seja bem-vindo,</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formulario">
+        <div class="formulario">
+            <mat-form-field appearance="outline" class="responsividade">
+              <mat-label>Usuário</mat-label>
+              <input
+                matInput
+                type="text"
+                name="usuario"
+                maxlength="20"
+                formControlName="usuario"
+              />
+              <mat-error  *ngIf="(formulario.get('usuario').dirty && formulario.get('usuario').touched) && formulario.get('usuario').invalid || formulario.get('usuario').hasError('required')">
+                Usuário é obrigatório.
+        </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="formulario">
+            <mat-form-field appearance="outline" class="responsividade">
+              <mat-label>Senha</mat-label>
+              <input
+                matInput
+                type="password"
+                name="senha"
+                maxlength="8"
+                formControlName="senha"
+              />
+              <mat-error  *ngIf="(formulario.get('senha').dirty && formulario.get('senha').touched) && formulario.get('senha').invalid || formulario.get('senha').hasError('required')">
+                Senha é obrigatório.
+        </mat-error>
+            
+            </mat-form-field>
+          </div>
+          <div>
+              <a routerLink="/recuperar-senha">Esqueci a senha</a>
+          </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions style="text-align: end;">
+      <button mat-raised-button  color="accent" class="btn" style="color: var( --cor-caixa-branca);" (click)="cadastrar()">Cadastre-se</button>
+      <button mat-raised-button  color="primary" class="btn" style="color: var( --cor-caixa-branca);" [disabled]="formulario.invalid" (click)="logout()">Entrar</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+   

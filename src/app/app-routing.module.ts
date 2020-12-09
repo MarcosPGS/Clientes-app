@@ -1,30 +1,45 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AplicacaoComponent } from './views/aplicacao/aplicacao.component';
 import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
+
   {
     path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'clientes',
     loadChildren: () =>
-      import('./views/clientes/clientes.module').then(
-        (m) => m.ClientesModule,
+      import('./views/login/login.module').then(
+        (m) => m.LoginModule,
       ),
   },
   {
-    path: 'servicos',
-    loadChildren: () =>
-      import('./views/servico-prestado/servico-prestado.module').then(
-        (m) => m.ServicoPrestadoModule,
-      ),
-  },
+    path: 'aplicacao',
+    component: AplicacaoComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'clientes',
+        loadChildren: () =>
+          import('./views/clientes/clientes.module').then(
+            (m) => m.ClientesModule,
+          ),
+      },
+      {
+        path: 'servicos',
+        loadChildren: () =>
+          import('./views/servico-prestado/servico-prestado.module').then(
+            (m) => m.ServicoPrestadoModule,
+          ),
+      },
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

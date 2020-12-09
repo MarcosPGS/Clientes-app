@@ -40,7 +40,7 @@ export class ServicoPrestadoFormularioComponent implements OnInit {
   }
 
   voltar(): void {
-    this.router.navigate(['/servicos']);
+    this.router.navigate(['/aplicacao/servicos/']);
   }
 
   salvar(): void{

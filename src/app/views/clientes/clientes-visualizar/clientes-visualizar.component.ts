@@ -28,7 +28,7 @@ export class ClientesVisualizarComponent implements OnInit {
   }
 
   voltar(): void {
-    this.router.navigate(['/clientes']);
+    this.router.navigate(['/aplicacao/clientes/']);
   }
 
   buscarPorId(): void{

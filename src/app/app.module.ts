@@ -12,12 +12,15 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ServicoPrestadoModule } from './views/servico-prestado/servico-prestado.module';
 import { DatePipe } from '@angular/common';
+import { LoginModule } from './views/login/login.module';
+import { AplicacaoComponent } from './views/aplicacao/aplicacao.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AplicacaoComponent
   ],
   imports: [
 BrowserModule,
@@ -28,7 +31,8 @@ BrowserModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    ServicoPrestadoModule
+    ServicoPrestadoModule,
+    LoginModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

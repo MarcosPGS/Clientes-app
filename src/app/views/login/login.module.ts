@@ -12,11 +12,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [LoginCadastroComponent, LoginRecuperarSenhaComponent, LoginLogoutComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     LoginRoutingModule,
     MatButtonModule,
     MatIconModule,
@@ -26,5 +27,6 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatCardModule,
   ], exports: [LoginCadastroComponent, LoginRecuperarSenhaComponent, LoginLogoutComponent],
+  providers: [LoginService]
 })
 export class LoginModule { }

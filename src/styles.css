@@ -69,6 +69,10 @@ span{
 .input-cliente{
   text-transform: uppercase;
 }
+
+.input-uppercase{
+  text-transform: uppercase;
+}
 .input-form{
   margin-right: 15px;
 }

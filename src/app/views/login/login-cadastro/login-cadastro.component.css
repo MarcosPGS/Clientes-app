@@ -1,0 +1,13 @@
+.cardLogin{
+    max-width: 400px;
+    border-bottom: 1px solid var(--cor-padrao);
+    border-top: 1px solid var(--cor-padrao);
+    border-left: 1px solid var(--cor-padrao);
+    border-right: 1px solid var(--cor-padrao);
+  }
+  
+
+  .mat-card{
+    margin: auto;
+    margin-top: 5%;
+  }

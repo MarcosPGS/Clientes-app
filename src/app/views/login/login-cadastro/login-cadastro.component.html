@@ -1,1 +1,108 @@
-<p>login-cadastro works!</p>
+<div class="login">
+    <mat-card class="cardLogin mat-elevation-z24">
+      <mat-card-header>
+        <mat-card-title style="color: var(--cor-padrao); font-family: var(--fonte-padrao);">Criar Usuário</mat-card-title>
+        <mat-card-subtitle style="color: var(--cor-padrao); font-family: var(--fonte-padrao);">Seja bem-vindo,</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formulario">
+          <div class="formulario">
+              <mat-form-field appearance="outline" class="responsividade">
+                <mat-label>Nome</mat-label>
+                <input
+                  matInput
+                  class="input-uppercase"
+                  type="text"
+                  name="nome"
+                  maxlength="50"
+                  formControlName="nome"
+                />
+                <mat-error  *ngIf="(formulario.get('nome').dirty && formulario.get('nome').touched) && formulario.get('nome').invalid || formulario.get('nome').hasError('required')">
+                    Nome Usuário é obrigatório.
+          </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="formulario">
+                <mat-form-field appearance="outline" class="responsividade">
+                  <mat-label>E-mail</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    name="email"
+                    maxlength="50"
+                    formControlName="email"
+                  />
+                  <mat-error  *ngIf="(formulario.get('email').dirty && formulario.get('email').touched) && formulario.get('email').invalid || formulario.get('email').hasError('required')">
+                    E-mail é obrigatório.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div class="formulario">
+                <mat-form-field appearance="outline" class="responsividade">
+                  <mat-label>Usuário</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    name="username"
+                    maxlength="20"
+                    formControlName="username"
+                  />
+                  <mat-error  *ngIf="(formulario.get('username').dirty && formulario.get('username').touched) && formulario.get('username').invalid || formulario.get('username').hasError('required')">
+                    Usuário é obrigatório.
+            </mat-error>
+                </mat-form-field>
+              </div>
+
+            <div class="formulario">
+              <mat-form-field appearance="outline" class="responsividade">
+                <mat-label>Senha</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  name="senha"
+                  minlength="8"
+                  maxlength="8"
+                  [(ngModel)]="senha"
+                  formControlName="password"
+                />
+                <mat-error  *ngIf="(formulario.get('password').dirty && formulario.get('password').touched) && formulario.get('password').invalid || formulario.get('password').hasError('required')">
+                  Senha é obrigatório.
+          </mat-error>
+              
+              </mat-form-field>
+            </div>
+            <div class="formulario">
+                <mat-form-field appearance="outline" class="responsividade">
+                  <mat-label>Confirmar Senha</mat-label>
+                  <input
+                    matInput
+                    type="texto"
+                    name="passwordConfirmacao"
+                    [(ngModel)]="senhaConfirmacao"
+                    minlength="8"
+                    maxlength="8"
+                    formControlName="passwordConfirmacao"
+                    (ngModelChange)="ValidarSenha()"
+                  />
+                  <mat-error  *ngIf="(formulario.get('passwordConfirmacao').dirty && formulario.get('passwordConfirmacao').touched) && formulario.get('passwordConfirmacao').invalid || formulario.get('passwordConfirmacao').hasError('required')">
+                    Senha de confirmação é obrigatório.
+            </mat-error>
+                
+                </mat-form-field>
+              </div>
+          </form>
+      </mat-card-content>
+      <mat-card-actions style="text-align: end;" *ngIf="habilitarBotaoSalvar == false">
+        <button mat-raised-button  color="accent" class="btn" style="color: var( --cor-caixa-branca);" (click)="voltar()">Voltar</button>
+      </mat-card-actions>
+      <mat-card-actions style="text-align: end;" *ngIf="habilitarBotaoSalvar == true">
+        <button mat-raised-button  color="accent" class="btn" style="color: var( --cor-caixa-branca);" (click)="voltar()">Voltar</button>
+        <button mat-raised-button  color="primary" class="btn" style="color: var( --cor-caixa-branca);"  [disabled]="formulario.invalid" (click)="salvar()">Salvar</button>
+      </mat-card-actions>
+    </mat-card>
+  
+  </div>
+     

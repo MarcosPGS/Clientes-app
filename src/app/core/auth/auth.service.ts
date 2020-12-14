@@ -10,13 +10,8 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   HOST: string;
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
-  URL: string;
-  CLIENTID: string;
-  CLIENTSECRET: string;
-  constructor(private http: HttpClient) {
-    this.CLIENTID = environment.clientID;
-    this.CLIENTSECRET = environment.clientSecret;
-  }
+  jwtPayload: any;
+  constructor(private http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,22 +29,29 @@ export class AuthService {
 
   logar(usuario: string, senha: string): Observable<any> {
     const headers = new HttpHeaders()
-   .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==')
-    .append('Content-Type', 'application/x-www-form-urlencoded');
+      .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==')
+      .append('Content-Type', 'application/x-www-form-urlencoded');
 
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post<any>(this.oauthTokenUrl, body, {headers});
+    return this.http
+      .post<any>(this.oauthTokenUrl, body, { headers })
+      .pipe(
+        tap((resp) => {
+          this.armazenarToken(resp.access_token);
+        })
+      );
+  }
+  armazenarToken(token: string): void {
+    localStorage.setItem('token', token);
   }
 
-  // logar2(usuario: string, senha: string): Observable<any> {
-  //   const headers = new HttpHeaders()
-  //   .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==')
-  //   .append('Content-Type', 'application/x-www-form-urlencoded');
+  carregarToken(): void {
+    const token = localStorage.getItem('token');
 
-  //   const body = `username=${usuario}&password=${senha}&grant_type=password`;
-
-  //   return this.http.post<any>(this.oauthTokenUrl, body, { headers });
-  // }
+    if (token) {
+      this.armazenarToken(token);
+    }
+  }
 }
 

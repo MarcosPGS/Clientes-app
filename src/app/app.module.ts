@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,10 @@ import { LoginModule } from './views/login/login.module';
 import { AplicacaoComponent } from './views/aplicacao/aplicacao.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { AuthService } from './core/auth/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './core/auth/token.interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ BrowserModule,
     ServicoPrestadoModule,
     LoginModule,
   ],
-  providers: [DatePipe, AuthService],
+  providers: [
+    DatePipe,
+    //  AuthService,
+    //  {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

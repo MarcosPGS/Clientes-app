@@ -13,11 +13,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 
 import { LoginService } from './login.service';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/app/core/auth/token.interceptor';
 
 @NgModule({
   declarations: [LoginCadastroComponent, LoginRecuperarSenhaComponent, LoginLogoutComponent],
   imports: [
-  CommonModule,
+CommonModule,
     LoginRoutingModule,
     MatButtonModule,
     MatIconModule,
@@ -27,6 +30,7 @@ import { LoginService } from './login.service';
     ReactiveFormsModule,
     MatCardModule,
   ], exports: [LoginCadastroComponent, LoginRecuperarSenhaComponent, LoginLogoutComponent],
-  providers: [LoginService]
+  providers: [LoginService, AuthService,
+     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true} ]
 })
 export class LoginModule { }

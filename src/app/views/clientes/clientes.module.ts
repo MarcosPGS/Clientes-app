@@ -13,13 +13,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ClientesService } from './clientes.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { ClientesAtualizarComponent } from './clientes-atualizar/clientes-atualizar.component';
 import { ClientesVisualizarComponent } from './clientes-visualizar/clientes-visualizar.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ClienteExcluirDialogComponent } from './modal/cliente-excluir-dialog/cliente-excluir-dialog.component';
+import { TokenInterceptor } from 'src/app/core/auth/token.interceptor';
 
 
 
@@ -47,6 +48,8 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig),
   ], exports: [ClientesFormularioComponent, ClientesConsultaComponent, ClientesAtualizarComponent,
      ClientesVisualizarComponent, ClienteExcluirDialogComponent],
-  providers: [ClientesService]
+  providers: [ClientesService,
+      {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    ]
 })
 export class ClientesModule { }

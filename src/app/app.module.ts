@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
 import { LoginModule } from './views/login/login.module';
 import { AplicacaoComponent } from './views/aplicacao/aplicacao.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
-
+import { AuthService } from './core/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ BrowserModule,
     ServicoPrestadoModule,
     LoginModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-login-logout',
@@ -12,6 +13,7 @@ export class LoginLogoutComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -22,9 +24,12 @@ export class LoginLogoutComponent implements OnInit {
   }
 
   logout(): void{
-    console.log('Usuario =>', this.formulario.value.usuario);
-    console.log('Senha =>', this.formulario.value.senha);
-    this.router.navigate(['/aplicacao']);
+    this.authService.logar(this.formulario.value.usuario, this.formulario.value.senha).subscribe((resp) => {
+      this.router.navigate(['/aplicacao']);
+      console.log(resp);
+    }, errorResp => {
+      console.log(errorResp);
+    });
   }
 
   cadastrar(): void{

@@ -30,8 +30,8 @@ export class LoginService {
     })
   };
 
-  salvar(usuario: UsuarioCadastro): Observable<UsuarioCadastro>{
-    return this.http.post<UsuarioCadastro>(`${this.URL}`, usuario);
+  salvar(usuario: UsuarioCadastro): Observable<any>{
+    return this.http.post<any>(`${this.URL}`, usuario);
   }
 
 }

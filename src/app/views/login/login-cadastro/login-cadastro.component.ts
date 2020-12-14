@@ -17,6 +17,8 @@ export class LoginCadastroComponent implements OnInit {
   senha: string;
   senhaConfirmacao: string;
   habilitarBotaoSalvar = false;
+  mostrarMGS: boolean;
+  mensagens = '';
   modelChanged = new Subject<string>();
   constructor(
     private fb: FormBuilder,
@@ -29,7 +31,8 @@ export class LoginCadastroComponent implements OnInit {
       }
       if (this.senha !== this.senhaConfirmacao) {
         this.habilitarBotaoSalvar = false;
-        alert('Senha de confirmação diferente da senha digitada acima.');
+        this.mostrarMGS = false;
+        this.mensagens = 'Senha de confirmação diferente da senha digitada acima.';
       }
     });
   }

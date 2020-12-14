@@ -15,6 +15,8 @@ body {
   --cor-400: #5c6bc0;
   --cor-cinza: #757575;
   --cor-accent: rgb(252, 45, 129);
+  --cor-ciano: #00B2A0;
+  --cor-vermelha: #e96d82;
 
   --margens-laterais-container: 25px;
 
@@ -69,6 +71,23 @@ span{
 .input-cliente{
   text-transform: uppercase;
 }
+.msg{
+  color: var(--cor-caixa-branca);
+   font-family: var(--fonte-padrao);
+}
+.msg-sucesso{
+  margin-top: 20px;
+    height: 40px;
+    background-color: var(--cor-ciano);
+
+}
+
+.msg-error{
+  margin-top: 20px;
+  height: 40px;
+  background-color: var(--cor-vermelha);
+}
+
 
 .input-uppercase{
   text-transform: uppercase;

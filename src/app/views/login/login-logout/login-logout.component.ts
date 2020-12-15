@@ -26,7 +26,6 @@ export class LoginLogoutComponent implements OnInit {
   logout(): void{
     this.authService.logar(this.formulario.value.usuario, this.formulario.value.senha).subscribe((resp) => {
       this.router.navigate(['/aplicacao']);
-      console.log(resp);
     }, errorResp => {
       console.log(errorResp);
     });

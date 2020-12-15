@@ -29,6 +29,7 @@ export class AuthService {
 
   logar(usuario: string, senha: string): Observable<any> {
     const headers = new HttpHeaders()
+      // .append('skip', 'true')
       .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==')
       .append('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -39,6 +40,7 @@ export class AuthService {
       .pipe(
         tap((resp) => {
           this.armazenarToken(resp.access_token);
+          console.log(resp.access_token);
         })
       );
   }

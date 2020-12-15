@@ -32,31 +32,47 @@ export class ClientesService {
     })
   };
 
+
+
   atualizar(cliente: Cliente): Observable<Cliente>{
-    return this.http.put<Cliente>(`${this.URL}`, cliente);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
+    return this.http.put<Cliente>(`${this.URL}`, cliente, { headers });
   }
   buscarPorNome(nome: string): Observable<Cliente[]>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
     const url = `${this.URL}/${nome}`;
-    return this.http.get<Cliente[]>(url);
+    return this.http.get<Cliente[]>(url, { headers });
   }
   buscarPorId(id: number): Observable<Cliente>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
     const url = `${this.URL}/id/${id}`;
-    return this.http.get<Cliente>(url);
+    return this.http.get<Cliente>(url, { headers });
   }
   excluir(id: number): Observable<Cliente>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
     const url = `${this.URL}/${id}`;
-    return this.http.delete<Cliente>(url);
+    return this.http.delete<Cliente>(url, { headers });
   }
   listarTodosClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`${this.URL}`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
+    return this.http.get<Cliente[]>(`${this.URL}`, { headers });
   }
 
   salvar(cliente: Cliente): Observable<Cliente>{
-    return this.http.post<Cliente>(`${this.URL}`, cliente);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
+    return this.http.post<Cliente>(`${this.URL}`, cliente, { headers });
   }
 
   totalizarClientes(): Observable<TotalizadorClientes> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
     const url = `${this.URL}/totalizador`;
-    return this.http.get<TotalizadorClientes>(url);
+    return this.http.get<TotalizadorClientes>(url, { headers });
   }
 }

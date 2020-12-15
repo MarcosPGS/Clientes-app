@@ -1,10 +1,13 @@
 .texto-header{
     font-family: var( --fonte-padrao);
 }
+.usuario-logado {
+    flex: 1 1 auto;
+  }
 .header{
     background-color: var(--cor-padrao);
 }
-.mat-icon-button{
+.menuButton{
     display: none;
 }
 a:hover {
@@ -28,7 +31,7 @@ a:hover {
    }
 
 @media screen and (max-width: 720px) {
-    .mat-icon-button{
+    .menuButton{
         display: block;
     }
   }

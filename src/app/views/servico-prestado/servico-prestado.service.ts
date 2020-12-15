@@ -36,14 +36,18 @@ export class ServicoPrestadoService {
   }
 
   pesquisarServicos(nome: string, mes: string): Observable<ServicoPrestado[]> {
+   const token = localStorage.getItem('token');
+   const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
    const httpParams = new HttpParams()
    .set('nome', nome)
    .set('mes', mes);
    const url = `${this.URL}/pesquisar?` + httpParams.toString();
-   return this.http.get<ServicoPrestado[]>(url);
+   return this.http.get<ServicoPrestado[]>(url,  { headers });
   }
 
   salvar(servico: ServicoPrestadoIncluir): Observable<ServicoPrestadoIncluir>{
-    return this.http.post<ServicoPrestadoIncluir>(`${this.URL}`, servico);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().append('Authorization', 'Bearer ' + token);
+    return this.http.post<ServicoPrestadoIncluir>(`${this.URL}`, servico, { headers });
   }
 }

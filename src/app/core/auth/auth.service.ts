@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ export class AuthService {
   HOST: string;
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
   jwtPayload: any;
+  jwtHelper: JwtHelperService = new JwtHelperService();
   constructor(private http: HttpClient) {}
 
   httpOptions = {
@@ -27,6 +29,15 @@ export class AuthService {
     }),
   };
 
+  isAuthenticated(): boolean{
+    const token = this.obterToken();
+    if (token) {
+      const expired = this.jwtHelper.isTokenExpired(token);
+      return !expired;
+    }
+    return false;
+  }
+
   logar(usuario: string, senha: string): Observable<any> {
     const headers = new HttpHeaders()
       // .append('skip', 'true')
@@ -40,20 +51,39 @@ export class AuthService {
       .pipe(
         tap((resp) => {
           this.armazenarToken(resp.access_token);
-          console.log(resp.access_token);
         })
       );
   }
   armazenarToken(token: string): void {
     localStorage.setItem('token', token);
   }
-
-  carregarToken(): void {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      this.armazenarToken(token);
-    }
+  removendoToken(): void {
+    localStorage.removeItem('token');
   }
+  getUsuarioAutenticado(): void{
+    const token = localStorage.getItem('token');
+    if (token) {
+      const usuario = this.jwtHelper.decodeToken(token);
+      return usuario;
+    }
+    return null;
+  }
+
+  obterToken(): string{
+    const token = localStorage.getItem('token');
+    if (token) {
+      return token;
+    }
+    return null;
+  }
+
+  // carregarToken(): void {
+  //   const token = localStorage.getItem('token');
+
+  //   if (token) {
+  //     this.armazenarToken(token);
+  //   }
+  // }
+
 }
 

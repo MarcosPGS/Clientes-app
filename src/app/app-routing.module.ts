@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AplicacaoComponent } from './views/aplicacao/aplicacao.component';
 import { HomeComponent } from './views/home/home.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AuthGuard } from '../app/core/auth/auth.guard';
 
 const routes: Routes = [
 
@@ -35,7 +36,8 @@ const routes: Routes = [
             (m) => m.ServicoPrestadoModule,
           ),
       },
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

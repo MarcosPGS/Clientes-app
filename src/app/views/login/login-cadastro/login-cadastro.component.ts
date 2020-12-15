@@ -62,7 +62,6 @@ export class LoginCadastroComponent implements OnInit {
   salvar(): void {
       this.loginService.salvar(this.montarObjetoIncluir()).subscribe(
         (resp) => {
-          alert(resp);
           this.voltar();
         }
       );

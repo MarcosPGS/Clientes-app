@@ -42,8 +42,8 @@ BrowserModule,
   ],
   providers: [
     DatePipe,
-    //  AuthService,
-    //  {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+     AuthService,
+     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
     ],
   bootstrap: [AppComponent]
 })
